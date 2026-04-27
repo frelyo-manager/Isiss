@@ -1,0 +1,826 @@
+<!DOCTYPE html>  <html lang="fr">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Isis- iPhone WiFi dédiés</title>  <!-- Polices élégantes et futuristes -->  
+<!-- Polices élégantes : Inter + Playfair Display italique -->
+
+
+<!-- Polices rares et élégantes : Yantramanav + Italiana + Great Vibes -->
+
+
+<!-- Polices rares et élégantes : Cinzel Decorative + Cormorant Upright + Cormorant Garamond -->
+
+
+<!-- Polices élégantes : Inter + Playfair Display italique -->
+
+<!-- Polices élégantes : Playfair Display (titres) + Lora (texte) -->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --bg-main: #050509;
+        --bg-elevated: #111111;
+        --bg-elevated-soft: #18181b;
+        --border-subtle: rgba(250,250,250,0.12);
+        --accent-red: #e10e0e;      /* rouge profond */
+        --accent-gold: #f5a300;     /* doré chaud */
+        --accent-gold-soft: #facc6b;
+        --accent-grad: linear-gradient(135deg, #e10e0e, #f5a300);
+        --text-main: #f9fafb;
+        --text-muted: #a1a1aa;
+        --card-radius: 22px;
+        --transition-fast: 0.25s ease;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: "Lora", system-ui, -apple-system, BlinkMacSystemFont, serif;
+        background:
+            radial-gradient(circle at top, #171717 0, #050509 45%, #000000 100%);
+        color: var(--text-main);
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Fond brillant / reflets or + rouge */
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background:
+            radial-gradient(circle at 0% 0%, rgba(245,163,0,0.18), transparent 55%),
+            radial-gradient(circle at 100% 100%, rgba(225,14,14,0.25), transparent 55%);
+        mix-blend-mode: screen;
+        opacity: 0.8;
+        z-index: -2;
+    }
+
+    body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size: 60px 60px;
+        opacity: 0.2;
+        mix-blend-mode: soft-light;
+        z-index: -1;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    /* HEADER */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(18px);
+        background: linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(0,0,0,0.7), transparent);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .header-inner {
+        padding: 14px 0 10px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* LOGO centré, élégant, or brillant */
+    .logo-wrapper {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 22px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.22);
+        background:
+            radial-gradient(circle at top, rgba(24,24,27,0.98), rgba(9,9,11,0.9));
+        box-shadow:
+            0 0 26px rgba(0,0,0,0.9),
+            0 0 44px rgba(245,163,0,0.45);
+    }
+
+    .logo-symbol {
+        width: 36px;
+        height: 36px;
+        border-radius: 999px;
+        border: 1px solid rgba(245,163,0,0.9);
+        background:
+            radial-gradient(circle at 25% 0%, rgba(245,163,0,0.98), transparent 55%),
+            radial-gradient(circle at 80% 100%, rgba(225,14,14,0.9), transparent 55%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1em;
+        font-weight: 700;
+        color: #050509;
+        box-shadow:
+            0 0 26px rgba(245,163,0,0.85),
+            0 0 40px rgba(225,14,14,0.8);
+    }
+
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+    }
+
+    .logo-name {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-weight: 700;
+        font-size: 1.3em;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        text-shadow:
+            0 0 12px rgba(245,245,244,0.6),
+            0 0 20px rgba(245,163,0,0.9);
+    }
+
+    .logo-baseline {
+        font-size: 0.3em;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--text-muted);
+    }
+
+    /* NAVIGATION */
+    nav {
+        margin-top: 6px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        font-size: 0.8em;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+    }
+
+    nav a {
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        color: var(--text-muted);
+        transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    nav a:hover {
+        border-color: rgba(245,163,0,0.9);
+        background: rgba(24,24,27,0.95);
+        color: var(--text-main);
+        transform: translateY(-1px);
+    }
+
+    main {
+        padding-bottom: 32px;
+    }
+
+    /* HERO */
+    #hero {
+        padding: 40px 0 32px 0;
+    }
+
+    #hero .hero-content {
+        display: grid;
+        grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.2fr);
+        gap: 32px;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-weight: 700;
+        font-size: 2.1em;
+        margin-bottom: 14px;
+        text-shadow:
+            0 0 16px rgba(245,245,244,0.6),
+            0 0 26px rgba(245,163,0,0.9);
+    }
+
+    .hero-highlight {
+        background: var(--accent-grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .hero-subtitle {
+        font-size: 0.98em;
+        color: #e5e7eb;
+        margin-bottom: 22px;
+    }
+
+    .hero-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .btn-primary {
+        background: var(--accent-grad);
+        color: #050509;
+        padding: 10px 24px;
+        border-radius: 999px;
+        font-size: 0.9em;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow:
+            0 0 20px rgba(245,163,0,0.7),
+            0 10px 30px rgba(0,0,0,0.9);
+        transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow:
+            0 0 28px rgba(245,163,0,0.95),
+            0 12px 36px rgba(0,0,0,1);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: var(--text-main);
+        padding: 9px 22px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.16);
+        font-size: 0.9em;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+        background: rgba(24,24,27,0.95);
+        border-color: rgba(225,14,14,0.95);
+        color: var(--accent-red);
+        transform: translateY(-1px);
+    }
+
+    .hero-side-card {
+        border-radius: var(--card-radius);
+        border: 1px solid rgba(255,255,255,0.08);
+        background: radial-gradient(circle at top, #18181b, #050509);
+        padding: 18px;
+        font-size: 0.85em;
+        color: #e5e7eb;
+        box-shadow:
+            0 20px 36px rgba(0,0,0,1),
+            0 0 24px rgba(15,15,15,0.9);
+    }
+
+    .hero-side-title {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-weight: 900;
+        margin-bottom: 8px;
+        font-size: 1.95em;
+        color: var(--accent-gold);
+    }
+
+    /* SECTIONS GÉNÉRALES */
+    section {
+        padding: 30px 0;
+    }
+
+    section h2 {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-weight: 600;
+        font-size: 1.4em;
+        margin-bottom: 10px;
+        text-shadow:
+            0 0 12px rgba(245,245,244,0.6),
+            0 0 20px rgba(245,163,0,0.8);
+    }
+
+    .section-subtitle {
+        font-size: 0.9em;
+        color: var(--text-muted);
+        margin-bottom: 16px;
+    }
+
+    /* POURQUOI */
+    #pourquoi .reasons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    .reason-card {
+        background: var(--bg-elevated);
+        border-radius: 18px;
+        border: 1px solid var(--border-subtle);
+        padding: 14px;
+        font-size: 0.86em;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.95);
+    }
+
+    .reason-title {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-weight: 600;
+        margin-bottom: 6px;
+        font-size: 0.95em;
+        color: var(--accent-red);
+    }
+
+    /* CATALOGUE – cartes verticales */
+    #catalogue .catalogue-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    #produits-list {
+        margin-top: 10px;
+    }
+
+    .produit {
+        display: flex;
+        flex-direction: column;
+        background: var(--bg-elevated-soft);
+        backdrop-filter: blur(14px);
+        margin: 14px 0;
+        padding: 16px;
+        border-radius: var(--card-radius);
+        border: 1px solid var(--border-subtle);
+        box-shadow: 0 18px 40px rgba(0,0,0,1);
+        overflow: hidden;
+    }
+
+    .produit img {
+        width: 100%;
+        max-width: 500px;
+        height: 420px;
+        object-fit: cover;
+        border-radius: 18px;
+        margin: 0 auto 12px auto;
+        border: 1px solid rgba(255,255,255,0.14);
+        box-shadow:
+            0 0 26px rgba(0,0,0,1),
+            0 22px 40px rgba(0,0,0,1);
+    }
+
+    .desc {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .desc h3 {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1em;
+        margin-bottom: 2px;
+    }
+
+    .desc-text {
+        font-size: 0.86em;
+        color: #d4d4d8;
+    }
+
+    .prix {
+        font-size: 1.1em;
+        color: var(--accent-gold-soft);
+        font-weight: 600;
+    }
+
+    .couleur-label {
+        font-size: 0.8em;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-muted);
+    }
+
+    .couleur-select {
+        width: 100%;
+        max-width: 220px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(24,24,27,0.95);
+        color: var(--text-main);
+        font-size: 0.86em;
+    }
+
+    .commander {
+        align-self: flex-start;
+        background: var(--accent-grad);
+        color: #050509;
+        padding: 9px 20px;
+        border-radius: 999px;
+        font-size: 0.86em;
+        font-weight: 600;
+        box-shadow: 0 10px 26px rgba(0,0,0,1);
+        margin-top: 4px;
+    }
+
+    .commander:hover {
+        filter: brightness(1.08);
+    }
+
+    /* A PROPOS */
+    #apropos p {
+        font-size: 0.9em;
+        color: #e5e7eb;
+        margin-bottom: 10px;
+    }
+
+    #apropos ul {
+        list-style: disc;
+        margin-left: 20px;
+        margin-top: 6px;
+        font-size: 0.86em;
+        color: #d4d4d8;
+    }
+
+    /* FOOTER */
+    footer {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        background: #000000;
+        padding: 18px 0 24px 0;
+        font-size: 0.85em;
+    }
+
+    .footer-contact p {
+        margin-bottom: 4px;
+    }
+
+    .footer-contact a {
+        color: var(--accent-red);
+    }
+
+    @media (max-width: 768px) {
+        #hero .hero-content {
+            grid-template-columns: 1fr;
+        }
+
+        nav ul {
+            gap: 12px;
+            font-size: 0.74em;
+        }
+
+        .logo-name {
+            font-size: 1.1em;
+        }
+        /* Titres du processus d'achat en or */
+#processus .step h3 {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 0.98em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-gold); /* même or que le reste du site */
+    margin-bottom: 6px;
+}
+/* RÉCAPITULATIF DES MODÈLES */
+#recap {
+    padding: 30px 0 40px 0;
+}
+
+/* RÉCAPITULATIF DES MODÈLES */
+#recap {
+    padding: 30px 0 40px 0;
+}
+
+#recap .recap-image {
+    margin-top: 16px;
+    text-align: center;
+}
+
+#recap .recap-image img {
+    max-width: 100%;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow:
+        0 0 26px rgba(0,0,0,0.9),
+        0 22px 40px rgba(0,0,0,0.9);
+    cursor: zoom-in; /* petit détail pour montrer qu’on peut cliquer */
+}
+</style>
+
+
+</head>  
+<body>  <header>  
+    <div class="container header-inner">  
+        <!-- LOGO CENTRÉ -->  
+        <div class="logo-wrapper">  
+            <div class="logo-symbol">ī</div>  
+            <div class="logo-text">  
+                <span class="logo-name">Isis</span>  
+                <span class="logo-baseline">La cellule auxiliaire de votre productivité numérique</span>  
+            </div>  
+        </div>  <!-- NAVIGATION : Accueil, Catalogue, Pourquoi, À propos, Contact -->  
+    <nav>  
+        <ul>  
+            ><a href="#hero">Accueil</a></li>  
+            ><a href="#catalogue">Catalogue</a></li>  
+            ><a href="#pourquoi">Pourquoi</a></li>  
+            ><a href="#apropos">À propos</a></li>  
+            ><a href="#contact">Service Client</a></li>  
+        </ul>  
+    </nav>  
+</div>
+
+</header>  <main>  <!-- HERO -->  
+<section id="hero">  
+    <div class="container hero-content">  
+        <div>  
+            <h1 class="hero-title">  
+                Arrêtez de tout faire sur un seul téléphone. C'est l'heure de reprendre le  <span class="hero-highlight">contrôle</span>.  
+            </h1>  
+            <p class="hero-subtitle">  
+                Nous fournissons des iPhone wifi dédiés, pensés comme des <strong>outils auxiliaires de production</strong>,  
+                pour les créateurs, les freelance et les entrepreneurs qui veulent travailler avec un setup structuré,  
+                pas avec un seul téléphone saturé.  
+            </p>  
+            <div class="hero-cta">  
+                <a href="#catalogue" class="btn-primary">Choisir mon second smartphone</a>  
+                <a href="#pourquoi" class="btn-secondary">Pourquoi un iPhone wifi dédié ?</a>  
+            </div>  
+        </div>  
+        <aside class="hero-side-card">  
+            <div class="hero-side-title">Qu'est ce qu'un iphone wifi dédié?</div>  
+            <p>  
+               Un iPhone Wi-Fi est un iPhone qui fonctionne uniquement avec une connexion Wi-Fi pour accéder à Internet, sans utiliser de carte SIM ni de réseau mobile ; il ne permet donc pas les appels et SMS classiques, mais seulement les communications via des applications en ligne.
+               De ce fait, il fonctionne comme un mini iPad.<br> Stop aux smartphones uniques qui gèrent en même temps vie perso, business, réseaux sociaux  
+                et notifications aléatoires. Un iPhone wifi dédié devient la base silencieuse de votre  
+                infrastructure numérique, pensée pour produire sans vous distraire.  
+            </p>  
+        </aside>  
+    </div>  
+</section>  
+
+<!-- POURQUOI -->  
+<section id="pourquoi">  
+    <div class="container">  
+        <h2>Pourquoi un iPhone wifi dédié ?</h2>  
+        <p class="section-subtitle">  
+            Un seul téléphone qui mélange tout finit toujours par devenir un goulot d’étranglement.  
+            Un iPhone wifi dédié vous permet de segmenter votre environnement numérique.  
+        </p>  
+
+        <p>  
+            En dehors du marketing, la réalité opérationnelle est simple : un seul téléphone qui mélange vie personnelle,  
+            business, réseaux sociaux et notifications aléatoires finit toujours par devenir un goulot d’étranglement.  
+            Un iPhone wifi dédié permet de <strong>segmenter votre environnement numérique</strong>, de structurer vos flux  
+            et de reprendre le contrôle sur votre attention.  
+        </p>  
+
+        <div class="reasons">  
+            <div class="reason-card">  
+                <div class="reason-title">Attention non fragmentée</div>  
+                <p>  
+                    En externalisant vos applications de création, de messagerie professionnelle et de réseaux sociaux  
+                    sur un appareil auxiliaire, vous décongestionnez votre device principal et réduisez la fatigue cognitive  
+                    liée aux interruptions constantes.  
+                </p>  
+            </div>  
+            <div class="reason-card">  
+                <div class="reason-title">Setup de créateur structuré</div>  
+                <p>  
+                    L’iPhone wifi dédié devient votre terminal de production multimédia : tournage vertical,  
+                    gestion de plusieurs comptes, monitoring des lives, sans impacter les performances ni la batterie  
+                    de votre téléphone principal.  
+                </p>  
+            </div>  
+            <div class="reason-card">  
+                <div class="reason-title">Séparation nette perso / pro</div>  
+                <p>  
+                    En isolant vos comptes professionnels, vos applications business et vos outils de vente sur un second  
+                    téléphone, vous créez une barrière fonctionnelle claire entre votre vie personnelle et votre activité.  
+                </p>  
+            </div>  
+        </div>  
+    </div>  
+</section>  
+
+<!-- CATALOGUE -->  
+<section id="catalogue">  
+    <div class="container">  
+        <div class="catalogue-header">  
+            <div>  
+                <h2>Choisissez votre iphone wifi dedié</h2>  
+                <p class="section-subtitle">  
+                    Chaque appareil est sélectionné, vérifié et pensé pour un usage intensif en Wi‑Fi :  
+                    création de contenu, messagerie business, gestion multi‑comptes.  Simple. Fonctionnel. Efficace.
+                </p>  
+            </div>  
+        </div>  
+
+        <div id="produits-list">  
+            Chargement...  
+        </div>  
+    </div>  
+</section>  
+  <!-- fin de #catalogue -->
+ <!-- fin de #catalogue -->
+
+<!-- RÉCAPITULATIF DES MODÈLES -->
+<section id="recap">
+    <div class="container">
+        <h2>Récapitulatif des modèles</h2>
+        <p class="section-subtitle">
+            Vue d’ensemble des modèles disponibles, de leurs capacités et de leurs fourchettes de prix.
+        </p>
+
+        <div class="recap-image">
+            <a href="resume1.jpg" target="_blank">
+                <img src="resume1.jpg" alt="Récapitulatif des modèles – partie 1">
+            </a>
+        </div>
+
+        <div class="recap-image">
+            <a href="resume2.jpg" target="_blank">
+                <img src="resume2.jpg" alt="Récapitulatif des modèles – partie 2">
+            </a>
+        </div>
+    </div>
+</section>
+  <!-- PROCESSUS D’ACHAT -->
+<section id="processus">
+    <div class="container">
+        <h2>Notre processus d’achat</h2>
+        <p class="section-subtitle">
+            Transmission fluide, livraison rapide et transparence totale de la commande au paiement.
+        </p>
+
+        <p>
+            Tous les iPhone proposés sont soigneusement importés, avec des pièces premium et une configuration optimisée pour un usage optimal en Wi‑Fi.  
+            Une fois votre commande passée, vous recevrez dans un délai de 2 à 5 jours ouvrés un colis fermé, sécurisé, composé de votre iPhone, d’une pochette protectrice et d’un chargeur de qualité, prêt à travailler dès la première utilisation.
+        </p>
+
+        <div class="process-steps">
+            <div class="step">
+                <h3>1. Vous appuyez sur “Commander”</h3>
+                <p>
+                    Cela vous redirige automatiquement vers WhatsApp. Là, vous discutez avec le vendeur, vous posez vos questions, et vous vous mettez d’accord sur le modèle, le délais et les détails de la livraison.
+                </p>
+            </div>
+            <div class="step">
+                <h3>2. Paiement Momo ou paiement à la livraison</h3>
+                <p>
+                    Après accord, vous pouvez effectuer le paiement via Mobile Money (Momo). Pour établir un premier contact avec le vendeur avant la livraison , vous avez la possibilité de le rencontrer pour effectuer un paiement en mains propores.
+                </p>
+            </div>
+            <div class="step">
+                <h3>3. Attestation de commande et garantie de livraison</h3>
+                <p>
+                    Dès que le paiement est confirmé, un certificat d’attestation de commande est généré et envoyé par WhatsApp.  
+                    Ce document mentionne le modèle commandé, le montant payé, la date prévue de livraison et les conditions de retours ou échanges, ce qui vous donne une véritable preuve contractuelle que votre commande sera livrée tel que convenu.
+                </p>
+            </div>
+            <div class="step">
+                <h3>4. Livraison sécurisée</h3>
+                <p>
+                    Vous recevez votre iPhone, sa pochette protectrice et un chargeur de qualité, emballés dans un colis soigné, entre 2 et 5 jours après votre commande, selon la disponibilité et votre emplacement.
+                </p>
+            </div>
+        </div>
+
+        <!-- Exemple de bannière / image du colis (à remplacer par ton vrai chemin) -->
+        <div class="shippment-photo">
+            <img src="colis-iphone.jpg" alt="Colis iPhone WiFi Yzys" />
+            <p class="caption" style="text-align: center; margin-top: 8px; font-size: 0.85em; color: #a1a1aa;">
+                Exemple de colis envoyé à un client : iPhone, pochette protectrice et chargeur soigneusement emballés.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- A PROPOS -->  
+<section id="apropos">  
+    <div class="container">  
+        <h2>À propos</h2>  
+        <p>  
+            Notre démarche s’inscrit dans une logique de rationalisation radicale de l’écosystème téléphonique des  
+            créateurs de contenu : un appareil dédié, optimisé, et affranchi des distractions superflues. Nous  
+            considérons le smartphone secondaire non pas comme un simple accessoire, mais comme un vecteur  
+            opérationnel central dans l’architecture de production numérique.  
+        </p>  
+        <p>  
+            Chaque appareil que nous sélectionnons fait l’objet d’un processus de contrôle itératif, orienté vers la  
+            stabilité, la constance et la prévisibilité des performances en condition réelle. L’objectif n’est pas  
+            d’ajouter un écran de plus, mais de structurer un flux de travail où chaque device a un rôle clairement  
+            défini.  
+        </p>  
+
+        <ul>  
+            >Sélection stricte des modèles adaptés à l’usage Wi‑Fi intensif.</li>  
+            >Vérifications fonctionnelles orientées vers les usages réels (créateurs, business, multi‑comptes).</li>  
+            >Accompagnement simple et direct : on te vend un outil, pas un problème de plus à gérer.</li>  
+        </ul>  
+    </div>  
+</section>
+
+</main>  <!-- FOOTER / CONTACT -->  <footer id="contact">  
+    <div class="container footer-contact">  
+        <p><strong>Service Client</strong></p>  
+ 
+        <p>WhatsApp/Appel direct : <a href="https://wa.me/22940102388" target="_blank">+229 0140102388</a></p>  
+    </div>  
+</footer>  
+<script>
+const NUMERO_WA = '22940102388'; // ton numéro
+
+function formatPrix(val) {
+    const num = Number(val);
+    if (isNaN(num)) return val;
+    return num.toLocaleString('fr-FR'); // 139000 -> "139 000"
+}
+
+fetch('produits.json')
+    .then(r => r.json())
+    .then(produits => {
+        const list = document.getElementById('produits-list');
+        list.innerHTML = '';
+
+        produits.forEach((p, index) => {
+            const div = document.createElement('div');
+            div.className = 'produit';
+
+            const selectId = `couleur-${index}`;
+
+            div.innerHTML = `
+                <img src="${p.img}" alt="${p.nom}">
+                <div class="desc">
+                    <h3>${p.nom}</h3>
+                    <p class="desc-text">${p.desc}</p>
+                    <div class="prix">${formatPrix(p.prix)} FCFA</div>
+                    <label class="couleur-label" for="${selectId}">Couleur</label>
+                    <select id="${selectId}" class="couleur-select">
+                        ${p.couleurs.map(c => `<option value="${c}">${c}</option>`).join('')}
+                    </select>
+                    <a href="#" class="commander" data-index="${index}">Commander</a>
+                </div>
+            `;
+
+            list.appendChild(div);
+        });
+
+        document.querySelectorAll('.commander').forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const idx = Number(btn.getAttribute('data-index'));
+                const produit = produits[idx];
+                const select = document.getElementById(`couleur-${idx}`);
+                const couleurChoisie = select ? select.value : 'non précisée';
+
+                const message = 
+`Je souhaite commander :
+
+- Modèle : ${produit.nom}
+- Configuration : ${produit.desc}
+- Couleur : ${couleurChoisie}
+- Prix : ${formatPrix(produit.prix)} FCFA`;
+
+                const url = `https://wa.me/${NUMERO_WA}?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+            });
+        });
+    })
+    .catch(error => {
+        console.error(error);
+        document.getElementById('produits-list').innerHTML = '<p style="text-align:center; color:#eab308;">⚠️ produits.json manquant ou invalide</p>';
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+[
+  {
+    "img": "iphone11.jpg",
+    "nom": "iPhone 11",
+    "desc": "128 Go",
+    "couleurs": ["blanc", "aléatoire"],
+    "prix": 139000
+  },
+  {
+    "img": "iphone12.jpg",
+    "nom": "iPhone 12",
+    "desc": "128 Go",
+    "couleurs": ["blanc", "aléatoire"],
+    "prix": 153000
+  },
+  {
+    "img": "iphone13.jpg",
+    "nom": "iPhone 13",
+    "desc": "128 Go",
+    "couleurs": ["blanc", "aléatoire"],
+    "prix": 158000
+  },
+  {
+    "img": "iphone13'.jpg",
+    "nom": "iPhone 13",
+    "desc": "256 Go",
+    "couleurs": ["blanc", "aléatoire"],
+    "prix": 173000
+  },
+  {
+    "img": "iphone13promax.jpg",
+    "nom": "iPhone 13 Pro Max",
+    "desc": "256 Go",
+    "couleurs": ["aléatoire"],
+    "prix": 183000
+  },
+  {
+    "img": "iphone14.jpg",
+    "nom": "iPhone 14",
+    "desc": "128 Go",
+    "couleurs": ["aléatoire"],
+    "prix": 182000
+  },
+  {
+    "img": "iphone14'.jpg",
+    "nom": "iPhone 14",
+    "desc": "256 Go",
+    "couleurs": ["aléatoire"],
+    "prix": 192000
+  },
+  {
+    "img": "iphone14pro.jpg",
+    "nom": "iPhone 14 Pro",
+    "desc": "128 Go",
+    "couleurs": ["aléatoire"],
+    "prix": 192000
+  },
+  {
+    "img": "iphone14pro'.jpg",
+    "nom": "iPhone 14 Pro",
+    "desc": "256 Go",
+    "couleurs": ["aléatoire"],
+    "prix": 211000
+  },
+  {
+    "img": "iphone14promax.jpg",
+    "nom": "iPhone 14 Pro Max",
+    "desc": "128 Go",
+    "couleurs": ["aléatoire"],
+    "prix": 215000
+  },
+  {
+    "img": "iphone14promax'.jpg",
+    "nom": "iPhone 14 Pro Max",
+    "desc": "256 Go",
+    "couleurs": ["aléatoire"],
+    "prix": 218000
+  },
+  {
+    "img": "iphone15.jpg",
+    "nom": "iPhone 15",
+    "desc": "128 Go",
+    "couleurs": ["aléatoire"],
+    "prix": 205000
+  },
+  {
+    "img": "iphone15pro.jpg",
+    "nom": "iPhone 15 Pro",
+    "desc": "128 Go",
+    "couleurs": ["blanc", "noir", "bleu", "aléatoire"],
+    "prix": 218000
+  },
+  {
+    "img": "iphone15pro'.jpg",
+    "nom": "iPhone 15 Pro",
+    "desc": "256 Go",
+    "couleurs": ["blanc", "noir", "bleu", "aléatoire"],
+    "prix": 233000
+  },
+  {
+    "img": "iphone15promax.jpg",
+    "nom": "iPhone 15 Pro Max",
+    "desc": "256 Go",
+    "couleurs": ["blanc", "noir", "bleu", "aléatoire"],
+    "prix": 236000
+  },
+  {
+    "img": "iphone16.jpg",
+    "nom": "iPhone 16",
+    "desc": "128 Go",
+    "couleurs": ["blanc", "noir", "rose", "bleu", "aléatoire"],
+    "prix": 220000
+  }
+]
