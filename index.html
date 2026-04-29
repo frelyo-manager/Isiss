@@ -436,7 +436,13 @@
             0 0 26px rgba(0,0,0,1),
             0 22px 40px rgba(0,0,0,1);
     }
+.produit-image-link {
+    display: block;
+}
 
+.produit-image-link img {
+    cursor: zoom-in; /* pour suggérer que l'image est cliquable */
+}
     .desc {
         display: flex;
         flex-direction: column;
@@ -839,18 +845,20 @@ fetch('produits.json')
             const selectId = `couleur-${index}`;
 
             div.innerHTML = `
-                <img src="${p.img}" alt="${p.nom}">
-                <div class="desc">
-                    <h3>${p.nom}</h3>
-                    <p class="desc-text">${p.desc}</p>
-                    <div class="prix">${formatPrix(p.prix)} FCFA</div>
-                    <label class="couleur-label" for="${selectId}">Couleur</label>
-                    <select id="${selectId}" class="couleur-select">
-                        ${p.couleurs.map(c => `<option value="${c}">${c}</option>`).join('')}
-                    </select>
-                    <a href="#" class="commander" data-index="${index}">Commander</a>
-                </div>
-            `;
+    <a href="${p.img}" target="_blank" class="produit-image-link">
+        <img src="${p.img}" alt="${p.nom}">
+    </a>
+    <div class="desc">
+        <h3>${p.nom}</h3>
+        <p class="desc-text">${p.desc}</p>
+        <div class="prix">${formatPrix(p.prix)} FCFA</div>
+        <label class="couleur-label" for="${selectId}">Couleur</label>
+        <select id="${selectId}" class="couleur-select">
+            ${p.couleurs.map(c => `<option value="${c}">${c}</option>`).join('')}
+        </select>
+        <a href="#" class="commander" data-index="${index}">Commander</a>
+    </div>
+`;
 
             list.appendChild(div);
         });
