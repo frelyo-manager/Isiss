@@ -495,11 +495,19 @@
         font-weight: 600;
         box-shadow: 0 10px 26px rgba(0,0,0,1);
         margin-top: 4px;
-    }
+        border: 1px solid rgba(250, 204, 21, 0.6); /* léger contour or */
+    transition: transform var(--transition-fast),
+                box-shadow var(--transition-fast),
+                filter var(--transition-fast);
+}
 
-    .commander:hover {
-        filter: brightness(1.08);
-    }
+.commander:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow:
+        0 0 22px rgba(18, 140, 126, 0.8),
+        0 12px 30px rgba(0,0,0,1);
+}
 
     /* A PROPOS */
     #apropos p {
@@ -768,19 +776,26 @@ il est tout simplement introuvable dans votre pays. <br><span class="hero-suit" 
             <div class="step">
                 <h3>4. Livraison sécurisée</h3>
                 <p>
-                    Vous recevez votre iPhone, sa pochette protectrice et un chargeur de qualité, emballés dans un colis soigné, entre 2 et 5 jours après votre commande, selon la disponibilité et votre emplacement.
+                    Vous recevez votre iPhone, sa pochette protectrice et un chargeur de qualité, emballés dans un colis soigné, entre 2 et 3 semaines après votre commande, selon la disponibilité et votre emplacement.
                 </p>
             </div>
         </div>
 
         <!-- Exemple de bannière / image du colis (à remplacer par ton vrai chemin) -->
         <div class="shippment-photo">
-            <img src="colis-iphone.jpg" alt="Colis iPhone WiFi Yzys" />
+            <img src="colis-iphone.jpg" alt="Colis iPhone WiFi ouvert" />
             <p class="caption" style="text-align: center; margin-top: 8px; font-size: 0.85em; color: #a1a1aa;">
                 Exemple de colis envoyé à un client : iPhone, pochette protectrice et chargeur soigneusement emballés.
             </p>
         </div>
-    </div>
+        <div class="colis">
+    <img src="unboxing" alt="Colis iPhone fermé">
+            <p class="caption" style="text-align: center; margin-top: 8px; font-size: 0.85em; color: #a1a1aa;">
+                Unboxing propre. Iphone prêt à etre connecté à votre vie digitale 
+            </p>
+</div>
+
+
 </section>
 <!-- A PROPOS -->  
 <section id="apropos">  
